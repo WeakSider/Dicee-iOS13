@@ -16,8 +16,17 @@ class ViewController: UIViewController {
     
     @IBAction func rollDice(_ sender: UIButton) {
         let diceArray = [UIImage(named: "DiceOne"), UIImage(named: "DiceTwo"), UIImage(named: "DiceThree"), UIImage(named: "DiceFour"), UIImage(named: "DiceFive"), UIImage(named: "DiceSix")]
-        leftDice.image = diceArray[Int.random(in: 0 ... 5)]
-        rightDice.image = diceArray[Int.random(in: 0 ... 5)]
+        var count = 0
+        var timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true){ t in
+            count += 1
+            print(count)
+            self.leftDice.image = diceArray[Int.random(in: 0 ... 5)]
+            self.rightDice.image = diceArray[Int.random(in: 0 ... 5)]
+            if count >= 4 {
+                t.invalidate()
+            }
+        }
+        
     }
     
 }
