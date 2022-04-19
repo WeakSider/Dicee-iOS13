@@ -9,13 +9,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var leftDice: UIImageView!
     
     @IBOutlet weak var rightDice: UIImageView!
     
     @IBAction func rollDice(_ sender: UIButton) {
         let diceArray = [UIImage(named: "DiceOne"), UIImage(named: "DiceTwo"), UIImage(named: "DiceThree"), UIImage(named: "DiceFour"), UIImage(named: "DiceFive"), UIImage(named: "DiceSix")]
+        sender.alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.alpha = 1.0
+        }
         var count = 0
         var timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true){ t in
             count += 1
